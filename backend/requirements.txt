@@ -1,8 +1,11 @@
-fastapi
-uvicorn
-openai-whisper
+fastapi>=0.68.0,<0.69.0
+uvicorn>=0.15.0,<0.16.0
+openai-whisper --no-deps
+tokenizers>=0.13.3 --no-build-isolation
 ffmpeg-python
 gtts
 tortoise-tts
-pydantic
-numpy
+pydantic>=1.8.0,<2.0.0
+numpy>=1.21.0
+python-multipart
+transformers

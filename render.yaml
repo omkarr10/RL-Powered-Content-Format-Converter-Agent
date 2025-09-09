@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: rl-converter-api
+    runtime: python
+    rootDirectory: backend
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.16
+      - key: PYTHON_PACKAGES
+        value: numpy pandas
+    autoDeploy: false
+    disk:
+      name: tmpfs
+      mountPath: /tmp
+      sizeGB: 1
