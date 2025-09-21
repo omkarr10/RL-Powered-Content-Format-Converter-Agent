@@ -1,11 +1,25 @@
-fastapi>=0.68.0,<0.69.0
-uvicorn>=0.15.0,<0.16.0
-openai-whisper --no-deps
-tokenizers>=0.13.3 --no-build-isolation
-ffmpeg-python
-gtts
-tortoise-tts
-pydantic>=1.8.0,<2.0.0
-numpy>=1.21.0
-python-multipart
-transformers
+# Core FastAPI dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+pydantic==1.10.13
+
+# Audio/Video processing
+ffmpeg-python==0.2.0
+gtts==2.4.0
+
+# AI/ML dependencies (simplified for Docker)
+numpy==1.24.3
+scipy==1.11.4
+torch==2.1.0
+torchaudio==2.1.0
+transformers==4.35.2
+tokenizers==0.15.0
+
+# OpenAI Whisper (simplified installation)
+openai-whisper==20231117
+
+# Additional utilities
+aiofiles==23.2.1
+httpx==0.25.2
+pytest==7.4.3
