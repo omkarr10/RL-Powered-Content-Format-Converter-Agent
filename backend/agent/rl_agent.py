@@ -1,8 +1,12 @@
 import json
 import os
 from pathlib import Path
-from typing import Dict, Tuple, List
+from typing import Dict, Tuple, List, Union
 import random
+
+
+# Global variable for shared agent instance
+_shared_agent: Union[None, 'RLAgent'] = None
 
 
 class RLAgent:
@@ -153,7 +157,7 @@ class RLAgent:
         elif avg_recent < 3.0:
             self.exploration_epsilon = min(0.3, self.exploration_epsilon * 1.05)
 
-    def _append_history(self, record: Dict):
+    def _append_history(self, record: Dict[str, any]):
         try:
             with open(self.history_path, "a", encoding="utf-8") as f:
                 f.write(json.dumps(record) + "\n")
@@ -163,9 +167,6 @@ class RLAgent:
 
 
 # Shared singleton accessor so routes and converters use the same agent instance
-_shared_agent: RLAgent | None = None
-
-
 def get_shared_agent() -> RLAgent:
     global _shared_agent
     if _shared_agent is None:
